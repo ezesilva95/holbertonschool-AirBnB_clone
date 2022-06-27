@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from uuid import uuid4
 from datetime import datetime
+from models import storage
 class BaseModel():
     def __init__(self, *args, **kwargs):
         if kwargs and len(kwargs) > 0:
@@ -16,6 +17,7 @@ class BaseModel():
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
     
     def __str__(self):
         string = "[" + __class__.__name__ + "]" + " (" + self.id + ") "
@@ -23,6 +25,8 @@ class BaseModel():
 
     def save(self):
         self.updated_at = datetime.now()
+        storage.save()
+
     
     def to_dict(self):
         for elements in self.__dict__:
