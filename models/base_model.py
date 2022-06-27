@@ -17,8 +17,8 @@ class BaseModel():
     def to_dict(self):
         for elements in self.__dict__:
             if elements == "created_at":
-                self.__dict__[elements] = str(self.__dict__[elements].isoformat())
+                self.__dict__[elements] = self.__dict__[elements].isoformat()
             elif elements == "updated_at":
-                self.__dict__[elements] = str(self.__dict__[elements].isoformat())
+                self.__dict__[elements] = self.__dict__[elements].isoformat()
         self.__dict__["__class__"] = __class__.__name__
         return self.__dict__
