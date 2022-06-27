@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import json
+from logging import exception
 import os
+import models
+
 class FileStorage():
     __file_path = "file.json"
     __objects = {}
@@ -9,13 +12,16 @@ class FileStorage():
         return FileStorage.__objects
     
     def new(self, obj):
-        FileStorage.__objects[obj.id] = obj
+        FileStorage.__objects[obj.__class__.__name__ + "." + obj.id] = obj
 
     def save(self):
-        with open(FileStorage.__file_path, 'w') as f:
-            json.dump(FileStorage.__objects, f)
+        tmp = {}
+        for key in FileStorage.__objects.keys():
+            tmp[key] = FileStorage.__objects[key].to_dict()
+        with open(FileStorage.__file_path, 'a') as f:
+            json.dump(tmp, f)
     
     def reload(self):
-        if os.path.exists(FileStorage.__file_path) is True:
-            with open(FileStorage.__file_path) as f:
-                json.load(f)
+        if os.path.isfile(FileStorage.__file_path) is True:
+            with open(FileStorage.__file_path, 'r+') as f:
+                obj = json.load(f)

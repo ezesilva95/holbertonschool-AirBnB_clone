@@ -1,23 +1,24 @@
 #!/usr/bin/python3
 from uuid import uuid4
-from datetime import datetime
-from models import storage
+from datetime import datetime, date
+import models
+import json
+import os
 class BaseModel():
     def __init__(self, *args, **kwargs):
-        if kwargs and len(kwargs) > 0:
-            kwargs.pop("__class__")
+        if kwargs is not None and len(kwargs) > 0:
             for element in kwargs:
-                if element == "created_at":
-                    self.__dict__[element] = datetime.strptime(kwargs[element], "%Y-%m-%dT%H:%M:%S.%f")
-                elif element == "updated_at":
-                    self.__dict__[element] = datetime.strptime(kwargs[element], "%Y-%m-%dT%H:%M:%S.%f")
-                else:
+                if element != "__class__":
+                    if element == "created_at":
+                        kwargs[element] = datetime.fromisoformat(kwargs[element])
+                    elif element == "updated_at":
+                        kwargs[element] = datetime.fromisoformat(kwargs[element])
                     setattr(self, element, kwargs[element])
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
     
     def __str__(self):
         string = "[" + __class__.__name__ + "]" + " (" + self.id + ") "
@@ -25,7 +26,7 @@ class BaseModel():
 
     def save(self):
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     
     def to_dict(self):
