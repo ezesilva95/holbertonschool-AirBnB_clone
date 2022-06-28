@@ -17,9 +17,7 @@ class FileStorage():
     def save(self):
         tmp = {}
         for key in FileStorage.__objects.keys():
-            print("SOY OBJ = {}".format(FileStorage.__objects[key]))
             tmp[key] = FileStorage.__objects[key].to_dict()
-            print("SOY TMP = {}".format(tmp[key]))
         with open(FileStorage.__file_path, 'a+', encoding='utf-8') as f:
             json.dump(tmp, f)
     
