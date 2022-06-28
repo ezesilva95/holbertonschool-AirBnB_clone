@@ -6,7 +6,7 @@ import json
 import os
 class BaseModel():
     def __init__(self, *args, **kwargs):
-        if kwargs is not None and len(kwargs) > 0:
+        if kwargs is not None and len(kwargs) != 0:
             for element in kwargs:
                 if element != "__class__":
                     if element == "created_at":
@@ -30,10 +30,11 @@ class BaseModel():
 
     
     def to_dict(self):
-        for elements in self.__dict__:
+        dic = self.__dict__.copy()
+        for elements in dic:
             if elements == "created_at":
-                self.__dict__[elements] = self.__dict__[elements].isoformat()
+                dic[elements] = dic[elements].isoformat()
             elif elements == "updated_at":
-                self.__dict__[elements] = self.__dict__[elements].isoformat()
-        self.__dict__["__class__"] = __class__.__name__
-        return self.__dict__
+                dic[elements] = dic[elements].isoformat()
+        dic["__class__"] = __class__.__name__
+        return dic

@@ -17,11 +17,13 @@ class FileStorage():
     def save(self):
         tmp = {}
         for key in FileStorage.__objects.keys():
+            print("SOY OBJ = {}".format(FileStorage.__objects[key]))
             tmp[key] = FileStorage.__objects[key].to_dict()
-        with open(FileStorage.__file_path, 'a') as f:
+            print("SOY TMP = {}".format(tmp[key]))
+        with open(FileStorage.__file_path, 'a+', encoding='utf-8') as f:
             json.dump(tmp, f)
     
     def reload(self):
         if os.path.isfile(FileStorage.__file_path) is True:
-            with open(FileStorage.__file_path, 'r+') as f:
+            with open(FileStorage.__file_path, 'r+', encoding='utf-8') as f:
                 obj = json.load(f)
