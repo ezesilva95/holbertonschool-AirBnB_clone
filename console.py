@@ -70,11 +70,26 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
     
-    def do_all(slef, arg):
-        tok = arg.split()
+    def do_all(self, arg):
         listt = []
+        tok = arg.split()
         if len(tok) == 0:
             for key in storage.all():
-                
+                i = storage.all()
+                string = str(i[key])
+                listt.append(string)
+                print(listt)
+        else:
+            if tok[0] not in self.clas:
+                print("** class doesn't exist **")
+            else:
+                for tok[0] in storage.all():
+                    i = storage.all()
+                    string = str(i[tok[0]])
+                    listt.append(string)
+                    print(listt)
+
+    def do_update(self, arg):
+        
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
