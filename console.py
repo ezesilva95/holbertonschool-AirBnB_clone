@@ -11,12 +11,10 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-
-
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
 
-    clas = {"BaseModel": BaseModel, "User": User}
+    clas = {"BaseModel": BaseModel, "User": User, "State": State, "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
 
     def do_quit(self, arg):
         """Exit program"""
@@ -120,7 +118,6 @@ class HBNBCommand(cmd.Cmd):
                     print("** attribute name missing **")
             else:
                 print("** no instance found **")
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
