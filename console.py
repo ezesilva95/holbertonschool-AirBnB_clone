@@ -86,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
                 i = storage.all()
                 string = str(i[key])
                 listt.append(string)
-                print(listt)
+            print(listt)
         else:
             if tok[0] not in self.clas:
                 print("** class doesn't exist **")
@@ -95,24 +95,24 @@ class HBNBCommand(cmd.Cmd):
                     i = storage.all()
                     string = str(i[tok[0]])
                     listt.append(string)
-                    print(listt)
+                print(listt)
 
-    def do_update(self, arg):
+def do_update(self, arg):
         tok = arg.split()
-        if len(arg) == 0:
+        if len(tok) == 0:
             print("** class name missing **")
-        elif arg not in self.clas:
+        elif tok[0] not in self.clas:
             print("** class doesn't exist **")
-        elif len(arg) == 1:
+        elif len(tok) == 1:
             print("** instance id missing **")
         else:
-            key = arg[0] + '.' + arg[1]
+            key = tok[0] + '.' + tok[1]
             if key in storage.all():
-                if len(arg) > 2:
-                    if len(arg) < 3:
+                if len(tok) > 2:
+                    if len(tok) == 3:
                         print("** value missing **")
                     else:
-                        setattr(storage.all[key], arg[2], arg[3])
+                        setattr(storage.all()[key], tok[2], tok[3][1:-1])
                         storage.all()[key].save()
                 else:
                     print("** attribute name missing **")
