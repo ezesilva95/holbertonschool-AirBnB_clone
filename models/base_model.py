@@ -36,5 +36,5 @@ class BaseModel():
                 dic[elements] = dic[elements].isoformat()
             elif elements == "updated_at":
                 dic[elements] = dic[elements].isoformat()
-        dic["__class__"] = __class__.__name__
+        dic["__class__"] = type(self).__name__
         return dic
