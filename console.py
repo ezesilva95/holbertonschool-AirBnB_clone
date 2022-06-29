@@ -10,6 +10,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+import shlex
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
@@ -97,8 +98,8 @@ class HBNBCommand(cmd.Cmd):
                     listt.append(string)
                 print(listt)
 
-def do_update(self, arg):
-        tok = arg.split()
+    def do_update(self, arg):
+        tok = shlex.split(arg)
         if len(tok) == 0:
             print("** class name missing **")
         elif tok[0] not in self.clas:
@@ -112,7 +113,7 @@ def do_update(self, arg):
                     if len(tok) == 3:
                         print("** value missing **")
                     else:
-                        setattr(storage.all()[key], tok[2], tok[3][1:-1])
+                        setattr(storage.all()[key], tok[2], tok[3][0:])
                         storage.all()[key].save()
                 else:
                     print("** attribute name missing **")
