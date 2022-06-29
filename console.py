@@ -81,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         listt = []
-        tok = arg.split()
+        tok = shlex.split(arg)
         if len(tok) == 0:
             for key in storage.all():
                 i = storage.all()
@@ -92,12 +92,13 @@ class HBNBCommand(cmd.Cmd):
             if tok[0] not in self.clas:
                 print("** class doesn't exist **")
             else:
-                for tok[0] in storage.all():
+                for key in storage.all():
                     i = storage.all()
-                    string = str(i[tok[0]])
-                    listt.append(string)
+                    x = key.split('.')
+                    if x[0] == tok[0]:
+                        string = str(i[key])
+                        listt.append(string)
                 print(listt)
-
     def do_update(self, arg):
         tok = shlex.split(arg)
         if len(tok) == 0:
