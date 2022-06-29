@@ -21,7 +21,7 @@ class BaseModel():
             models.storage.new(self)
     
     def __str__(self):
-        string = "[" + __class__.__name__ + "]" + " (" + self.id + ") "
+        string = "[" + type(self).__name__ + "]" + " (" + self.id + ") "
         return ("{} {}".format(string, self.__dict__))
 
     def save(self):
