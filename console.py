@@ -121,5 +121,31 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+    def do_count(self, arg):
+        tok = shlex.split(arg)
+        count = 0
+        if tok[0] not in self.clas:
+            print("** class doesn't exist **")
+        for key in storage.all():
+            x = key.split('.')
+            if x[0] == tok[0]:
+                count += 1
+        print(count)
+    
+    def precmd(self, arg):
+        tok = arg.split('.', 1)
+        if len(tok) == 2:
+            clase = tok[0]
+            tok = tok[1].split('(', 1)
+            com = tok[0]
+            if len(tok) == 2:
+                tok = tok[1].split(')', 1)
+                if len(tok) == 2:
+                    tok1 = tok[0].strip('"')
+                    _id = tok1
+            last_command = com + " " + clase + " " + _id
+            return last_command
+        else:
+            return arg
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
