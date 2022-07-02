@@ -8,7 +8,7 @@ class Place_testing(unittest.TestCase):
     """ check BaseModel """
 
     def testpep8(self):
-        """ testing codestyle """
+        """ testing codestyle for Place """
         pepstylecode = pep8.StyleGuide(quiet=True)
         path_user = 'models/place.py'
         result = pepstylecode.check_files([path_user])
