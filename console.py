@@ -12,10 +12,12 @@ from models.place import Place
 from models.review import Review
 import shlex
 
+
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb)'
 
-    clas = {"BaseModel": BaseModel, "User": User, "State": State, "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
+    clas = {"BaseModel": BaseModel, "User": User, "State": State, "City": City,
+            "Amenity": Amenity, "Place": Place, "Review": Review}
 
     def do_quit(self, arg):
         """Exit program"""
@@ -99,6 +101,7 @@ class HBNBCommand(cmd.Cmd):
                         string = str(i[key])
                         listt.append(string)
                 print(listt)
+
     def do_update(self, arg):
         tok = shlex.split(arg)
         if len(tok) == 0:
@@ -131,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
             if x[0] == tok[0]:
                 count += 1
         print(count)
-    
+
     def precmd(self, arg):
         tok = arg.split('.', 1)
         if len(tok) == 2:
@@ -147,5 +150,7 @@ class HBNBCommand(cmd.Cmd):
             return last_command
         else:
             return arg
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
