@@ -13,9 +13,9 @@ class BaseModel():
                 if elemnt != "__class__":
                     if elemnt == "created_at":
                         kwargs[elemnt] = datetime.fromisoformat(kwargs[elemnt])
-                    elif element == "updated_at":
+                    elif elemnt == "updated_at":
                         kwargs[elemnt] = datetime.fromisoformat(kwargs[elemnt])
-                    setattr(self, elemnt, kwargs[element])
+                    setattr(self, elemnt, kwargs[elemnt])
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
