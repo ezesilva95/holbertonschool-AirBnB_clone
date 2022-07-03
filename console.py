@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Console"""
 import cmd
 from models.base_model import BaseModel
 import models
@@ -14,6 +15,7 @@ import shlex
 
 
 class HBNBCommand(cmd.Cmd):
+    """Console"""
     prompt = '(hbnb)'
 
     clas = {"BaseModel": BaseModel, "User": User, "State": State, "City": City,
@@ -33,6 +35,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
+        """Creates a new instance"""
         if arg:
             if arg in self.clas:
                 get = getattr(sys.modules[__name__], arg)
@@ -65,6 +68,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
 
     def do_destroy(self, arg):
+        """Deletes an instance based on the class name and id"""
         tok = arg.split()
         if len(tok) == 0:
             print("** class name missing **")
@@ -82,6 +86,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, arg):
+        """Prints all string representation"""
         listt = []
         tok = shlex.split(arg)
         if len(tok) == 0:
@@ -103,6 +108,7 @@ class HBNBCommand(cmd.Cmd):
                 print(listt)
 
     def do_update(self, arg):
+        """Updates an instance based on the class name and id"""
         tok = shlex.split(arg)
         if len(tok) == 0:
             print("** class name missing **")
@@ -125,6 +131,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_count(self, arg):
+        """Print how many instances exist"""
         tok = shlex.split(arg)
         count = 0
         if tok[0] not in self.clas:
@@ -136,6 +143,7 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def precmd(self, arg):
+        """checks how the command is entered and returns it"""
         tok = arg.split('.', 1)
         if len(tok) == 2:
             clase = tok[0]
