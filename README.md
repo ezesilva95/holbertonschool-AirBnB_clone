@@ -33,17 +33,20 @@ objects, etc.
 
         (hbnb)
         vagrant@ubuntu-focal:~/holbertonschool-AirBnB_clone$
-    
 
-### Commands that the console can execute
-- quit / EOF: Exit the program
-- help: Commands to be used or description of the commands
-- create: Creates a new instance of BaseModel
-- show: Prints the string representation of an instance based on the class name and id
-- destroy: Deletes an instance based on the class name and id
-- all: Prints all string representation of all instances based or not on the class name
-- update: Updates an instance based on the class name and id by adding or updating attribute
-- count: Print how many instances exit
+## Commands Implmented
+
+| Command             | Description                                                                        |
+| ------------------- | -----------------------------------------------------------------------------------|
+| quit / EOF          | Exit the program.                                                                  |
+| help                | Commands to be used or description of the commands.                                |
+| create              | Creates a new instance of BaseModel.                                               |
+| show                | Prints the string representation of an instance based on the class name and id.    |
+| destory             | Deletes an instance based on the class name and id                                 |
+| all                 | Prints all string representation of all instances based or not on the class name.  |
+| update              | Updates an instance based on the class name and id by adding or updating attribute.|
+| count               | Print how many instances exit.                                                     |
+    
 
 ## Existing classes
 
