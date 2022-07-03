@@ -1,21 +1,19 @@
 
 # AirBnB_clone
 
-The project consists of several parts. Initially, it consists of
-creating an AirBnB console. In other parts the database and the
-front-end interface will be implemented. This is the first part, 
-currently only the console was created.
+This project consists of several parts that will be worked in what we can name mini-projects. The first part consist of creating an AirBnB console, which is the one we are currently working. In the future the database and the
+front-end interface will be implemented.
 
 As the database is not yet implemented, the information is stored
 in a json file.
 
 ## Console
 We have created a console that works just like a shell. The console
-is a command interpreter, in this case it only works in  specific 
+is a command interpreter that works in interactive and non-interactive mode, in this case it only works in specific 
 cases, such as createing objects, updateing attributes, destroying 
 objects, etc. 
 
-### To execute the console:
+### How to execute the console:
     - Interactive mode:
         vagrant@ubuntu-focal:~/holbertonschool-AirBnB_clone$ ./console.py
         (hbnb)help
@@ -37,7 +35,7 @@ objects, etc.
         vagrant@ubuntu-focal:~/holbertonschool-AirBnB_clone$
     
 
-### Commands executed by the console
+### Commands that the console can execute
 - quit / EOF: Exit the program
 - help: Commands to be used or description of the commands
 - create: Creates a new instance of BaseModel
