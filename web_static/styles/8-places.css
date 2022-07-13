@@ -24,6 +24,9 @@ div.price_by_night {
 	font size: 30px;
 	position: relative;
 	float: right;
+	border-radius: 100%;
+	bottom: 80px;
+	line-height: 60px;
 }
 div.information {
 	height: 80px;
@@ -33,6 +36,10 @@ div.information {
 div.max_guest, div.number_rooms. div.number_bathrooms {
 	width: 100px;
 	height: 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 5px;
+	display: inline-block;
+	line-height: 120px;
 }
 .max_guest {
 	background-image: url("../images/icon_group.png");
@@ -45,4 +52,6 @@ div.max_guest, div.number_rooms. div.number_bathrooms {
 }
 div.user, div.description {
 	text-align: left;
+	margin-bottom: 5px;
+	margin-top: 5px;
 }
