@@ -14,7 +14,8 @@ section.filters button {
 	font-size: 18px;
 	color: #FFFFFF;
 	float: right;
-	margin 11px 30px;
+	margin: 11px 30px;
+
 }
 section.filters button:hover {
 	opacity: 90%;
